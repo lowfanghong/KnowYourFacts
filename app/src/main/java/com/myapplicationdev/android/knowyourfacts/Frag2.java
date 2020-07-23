@@ -1,5 +1,6 @@
 package com.myapplicationdev.android.knowyourfacts;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +18,7 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Frag2 extends Fragment {
-
+    Button btncolour;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -59,6 +63,18 @@ public class Frag2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_frag2, container, false);
+
+        View view =  inflater.inflate(R.layout.fragment_frag2, container, false);
+        btncolour = view.findViewById(R.id.button2);
+        btncolour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Random Random = new Random();
+                int color = Color.argb(255, Random.nextInt(256), Random.nextInt(256),
+                        Random.nextInt(256));
+                view.setBackgroundColor(color);
+            }
+        });
+        return view;
     }
 }
